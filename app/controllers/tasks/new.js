@@ -7,9 +7,24 @@ export default Ember.Controller.extend({
             
             var formData = {
                 title: self.get('title'),
-                date: self.get('date'),
+                date: new Date(self.get('date')),
                 description: self.get('description')                
-            }                        
+            };     
+            
+            //Create DB model
+            var newTask = this.store.createRecord('task', formData);
+            
+            //Save to firebase
+            newTask.save();
+            
+            //clear form
+            this.setProperties (
+                {
+                    title: '',
+                    date: '',
+                    description: ''               
+                }      
+            );                
         }
     }
 });
