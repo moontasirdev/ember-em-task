@@ -1,1 +1,16 @@
-{{outlet}}
+
+<form>
+    <div class="form-group">
+        <label>Title</label>
+        {{input type="text" value=model.title placeholder="Add Task.." class="form-control"}}
+    </div>
+    <div class="form-group">
+        <label>Due Date</label>
+        {{input type="date" value=model.date class="form-control"}}
+    </div>
+    <div class="form-group">
+        <label>Description</label>
+        {{textarea value=description placeholder="model.Description of the Task.." class="form-control"}}
+    </div>
+    <button {{action 'editTask' model.id}} class="btn btn-primary">Submit</button> 
+</form>
